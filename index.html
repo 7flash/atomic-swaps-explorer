@@ -46,7 +46,7 @@
 		</header><!-- .history-header -->
 
 		<script id="history-list-item" type="text/x-jsrender">
-			<div class="history-list-item">
+			<div class="history-list-item" style="{{:status == 'success' && 'background:green;' }}">
 
 				<div class="history-list-header">
 					<div class="history-col">Asset</div>
@@ -58,25 +58,25 @@
 						<div class="history-list-content">
 
 						<div class="history-col history-col-asset">
-							<div class="history-asset">{{:alice.asset}}</div>
-							<div class="history-asset">{{:bob.asset}}</div>
+							<div class="history-asset">{{:alice.asset ? alice.asset : 'ETH'}}</div>
+							<div class="history-asset">{{:bob.asset ? bob.asset : 'BTC'}}</div>
 						</div>
 
 						<div class="history-col history-col-wallets">
 							<div class="history-wallet history-wallet-out">
 								<div class="user-count align-items-center">
-									<span>{{:alice.from.address}}</span>
+									<span>{{:alice.from.address onerror='Unknown'}}</span>
 									<i class="fas fa-user user-icon"></i>
-									<span>{{:alice.from.rating}}</span>
+									<span>{{:alice.from.reputation onerror='0'}}</span>
 								</div>
 
 								<i class="fas fa-long-arrow-alt-right"></i>
 							</div>
 							<div class="history-wallet history-wallet-in">
 								<div class="user-count align-items-center">
-									<span>{{:alice.to.address}}</span>
+									<span>{{:alice.to.address onerror='Unknown'}}</span>
 									<i class="fas fa-user user-icon"></i>
-									<span>{{:alice.to.rating}}</span>
+									<span>{{:alice.to.reputation onerror='0'}}</span>
 								</div>
 
 								<i class="fas fa-long-arrow-alt-left"></i>
@@ -85,13 +85,13 @@
 
 						<div class="history-col history-col-amount">
 							<div class="history-amount history-amount-out">
-								<span class="history-amount-value">{{:alice.value}} {{:alice.asset}}</span>
-								<span class="history-amount-fee"><strong>Fee</strong> {{:alice.fee}} {{:alice.asset}}</span>
+								<span class="history-amount-value">{{:alice.value onerror='0'}} {{:alice.asset onerror=''}}</span>
+								<span class="history-amount-fee"><strong>Fee</strong> {{:alice.fee onerror='0'}} {{:alice.asset onerror=''}}</span>
 								<i class="fas fa-long-arrow-alt-right"></i>
 							</div>
 							<div class="history-amount history-amount-in">
-								<span class="history-amount-value">{{:bob.value}} {{:bob.asset}}</span>
-								<span class="history-amount-fee"><strong>Fee</strong> {{:bob.fee}} {{:bob.asset}}</span>
+								<span class="history-amount-value">{{:bob.value onerror='0'}} {{:bob.asset onerror=''}}</span>
+								<span class="history-amount-fee"><strong>Fee</strong> {{:bob.fee onerror='0'}} {{:bob.asset onerror=''}}</span>
 								<i class="fas fa-long-arrow-alt-left"></i>
 							</div>
 						</div>
@@ -99,16 +99,16 @@
 						<div class="history-col history-col-wallets">
 							<div class="history-wallet history-wallet-out">
 								<div class="user-count align-items-center">
-									<span>{{:bob.to.address}}</span>
+									<span>{{:bob.to.address onerror='Unknown'}}</span>
 									<i class="fas fa-user user-icon"></i>
-									<span>{{:bob.to.rating}}</span>
+									<span>{{:bob.to.reputation onerror='0'}}</span>
 								</div>
 							</div>
 							<div class="history-wallet history-wallet-in">
 								<div class="user-count align-items-center">
-									<span>{{:bob.from.address}}</span>
+									<span>{{:bob.from.address onerror='Unknown'}}</span>
 									<i class="fas fa-user user-icon"></i>
-									<span>{{:bob.from.rating}}</span>
+									<span>{{:bob.from.reputation onerror='0'}}</span>
 								</div>
 							</div>
 						</div>
