@@ -28,9 +28,9 @@ var model = {
           rating: 5
         }
       },
-      transactions: [
-        '0xb55107996afd0565699483e19db80996473474e2aa75'
-      ]
+      transactions: {
+        withdrawTx: '0xb55107996afd0565699483e19db80996473474e2aa75'
+      }
     }
   ]
 }
@@ -44,7 +44,11 @@ var app = {
 
   updateSwaps: function() {
     $.getJSON('https://seven.swap.online/swaps-testnet/state/ethbtc', function(data) {
-      model.swaps = data
+      model.swaps = data.map((item) => {
+        item.bob.value = item.bob.value / 10**8
+        item.bob.fee = item.bob.fee / 10**8
+        return item
+      })
 
       historyView.init()
     })
