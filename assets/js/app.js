@@ -45,6 +45,7 @@ var app = {
   updateSwaps: function() {
     $.getJSON('https://seven.swap.online/swaps-testnet/state/ethbtc', function(data) {
       model.swaps = data.map((item) => {
+	item.alice.value = item.alice.value / 10**18
         item.bob.value = item.bob.value / 10**8
         item.bob.fee = item.bob.fee / 10**8
         return item
