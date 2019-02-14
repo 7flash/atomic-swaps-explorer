@@ -1323,11 +1323,10 @@ a {
 	border-radius: 3px;
 	transition: background .3s;
 }
-.history-list-item:nth-child(even) {
-	background-color: #f9f8fd;
-}
 .history-list-item:hover {
 	background-color: #edebf3;
+	transform: scale(1.1);
+	cursor: pointer;
 }
 .history-list-header {
 	background-color: #5e15c6;

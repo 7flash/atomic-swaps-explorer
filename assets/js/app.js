@@ -3,6 +3,7 @@ var baseURL = 'https://seven.swap.online/swaps-testnet/state'
 var model = {
   swaps: [
     {
+      swapSecretHash: '0x0',
       status: 'success',
       bob: {
         asset: 'BTC',
@@ -81,6 +82,12 @@ var currentSwapView = {
     $('#secretHashField').on('input', function(e) {
       var secretHash = e.currentTarget.value
 
+      app.fetchSwapRaw(secretHash)
+    })
+
+    $('.swap-history').on('click', '.history-list-item', function(e) {
+      const secretHash = $(this).attr('data-secretHash')
+      $('#secretHashField').val(secretHash)
       app.fetchSwapRaw(secretHash)
     })
 
